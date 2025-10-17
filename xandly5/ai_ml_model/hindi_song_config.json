@@ -1,0 +1,20 @@
+{
+  "lyrics_file_path": "lyrics_files/cleaned_lyrics_devanagari.txt",
+  "saved_model_path": "saved_models/hindi_song_model.h5",
+  "saved_lyrics_path": "saved_models/hindi_new_lyricsi.txt",
+  "save_chart": true,
+  "is_interactive": true,
+  "language": "hindi",
+  
+  "hp_output_dimensions": 128,
+  "hp_lstm_units": 256,
+  "hp_epochs": 150,
+  "hp_patience": 10,
+  "hp_min_delta": 0.0001,
+  "hp_test_size": 0.2,
+  "random_state": 42,
+  
+  "seed_text": "मेरे दिल में",
+  "word_count": 50,
+  "word_group_count": 8
+}
