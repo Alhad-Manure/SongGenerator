@@ -18,15 +18,11 @@ def tensorflow_diagnostics():
 class LyricsModel:
 
     def __init__(self, config_file):
-        """
-        Trains and saves a model using Keras and TensorFlow
-
-        :param config_file: json config file with settings including hyperparameters
-        """
-
-        with open(config_file) as json_file:
+        with open(config_file, encoding='utf-8') as json_file:
             self.config = json.load(json_file)
-        self.catalog = Catalog()
+        
+        language = self.config.get('language', 'english')
+        self.catalog = Catalog(language=language)
         self.catalog.add_file_to_catalog(self.config['lyrics_file_path'])
         self.catalog.tokenize_catalog()
         self.is_interactive = self.config['is_interactive']
@@ -95,7 +91,7 @@ class LyricsModel:
         lyrics = LyricsFormatter.format_lyrics(lyrics_text, self.config['word_group_count'])
         print(lyrics)
 
-        with open(self.config['saved_lyrics_path'], 'w') as lyrics_file:
+        with open(self.config['saved_lyrics_path'], 'w', encoding='utf-8') as lyrics_file:
             lyrics_file.write(lyrics)
             lyrics_file.close()
 
